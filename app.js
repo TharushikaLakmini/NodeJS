@@ -1,3 +1,19 @@
-const myModule = require('./my-module.js');
+function checkNumber(num) {
+    return new Promise((resolve, reject) => {
 
-console.log(myModule.myFunction());
+        if (num > 10) {
+            resolve("Number is greater than 10 ");
+        } else {
+            reject("Number is 10 or less ");
+        }
+
+    });
+}
+
+checkNumber(15)
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
