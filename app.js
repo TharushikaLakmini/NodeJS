@@ -1,13 +1,18 @@
-const http = require('http');
+const https = require('https');
 
-const PORT = 3000;
+https.get('https://jsonplaceholder.typicode.com/posts/1', (resp) => {
+    let data = '';
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('Hello World!');
-    res.end();
-});
+    // A chunk of data has been received.
+    resp.on('data', (chunk) => {
+        data += chunk;
+    });
 
-server.listen(PORT, '127.0.0.1', () => {
-    console.log(`Server running at http://127.0.0.1:${PORT}`);
+    // The whole response has been received.
+    resp.on('end', () => {
+        console.log(JSON.parse(data));
+    });
+
+}).on('error', (err) => {
+    console.log("Error: " + err.message);
 });
