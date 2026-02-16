@@ -1,1 +1,1 @@
-This is the Read File example for Lab 03.
+Hello World!
