@@ -10,10 +10,13 @@ function checkNumber(num) {
     });
 }
 
-checkNumber(15)
-    .then((message) => {
-        console.log(message);
-    })
-    .catch((error) => {
+async function runExample() {
+    try {
+        const result = await checkNumber(15);
+        console.log(result);
+    } catch (error) {
         console.log(error);
-    });
+    }
+}
+
+runExample();
